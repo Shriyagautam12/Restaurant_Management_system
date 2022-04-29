@@ -1,0 +1,122 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .topdiv {
+            margin: auto;
+            height: 80px;
+            width: 700px;
+            border: solid black;
+            padding-top: 40px;
+            padding-bottom: 90px;
+            background-color: rgb(20, 150, 20);
+            text-align: center;
+        }
+        body{
+            background-color: rgb(167, 255, 159);
+        }
+        .okay {
+            height: 100px;
+            border: solid black;
+            margin: 10px;
+        }
+    </style>
+    <title>Bill_sheet</title>
+</head>
+
+<body>
+    <div class="topdiv">
+        <h3>Resturant service management </h3>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 okay">
+            <form action="{% url 'login_handle:showbuyitems' %}" method="POST">
+                {%csrf_token %}
+                <div class="row">
+                    <div class="col-md-5 pt-1">
+                        <label for="itemname">Enter Itemname</label>
+                    </div>
+                    <div class="col-md-5 pt-1"> <input type="text" name="itemname" id="itemname"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 pt-1">
+                        <label for="itemnquantity">Enter Quantity</label>
+                    </div>
+                    <div class="col-sm-3 pt-1"> <input type="number" name="itemquantity" id="itemquantity"> </div>
+                    <div class="col-sm-5"> <button type="submit">Show</button> </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 okay align-items-center">
+            <div class="row mt-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-4"> <a href="{% url 'login_handle:printpdf' %}">Print/SAve</a> </div>
+                <div class="col-md-4"> <a href="{% url 'login_handle:deletebuyitem' %}">Delete</a> </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2"><a href="{% url 'goback' %}">Go Back</a></div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row mx-5 pl-5">
+        <div class="col-md-2">Id</div>
+        <div class="col-md-3">Name</div>
+        <div class="col-md-2">Rate</div>
+        <div class="col-md-1">Quantity</div>
+        <div class="col-md-2">Amount</div>
+        <div class="col-md-2">Profit</div>
+    </div>
+    {% if flag is 1 %}
+    <form action="#" method="POST" >
+        {% csrf_token %}
+        {% for items in mylist_items %}
+        <div class="row mx-5 pl-5 border border-dark">
+            <div class="col-md-1"><input type="radio" name="todelete" id="{{items.name}}" value="{{items.name}}"></div>
+            <div class="col-md-1">{{items.id}}</div>
+            <div class="col-md-3">{{items.name}}</div>
+            <div class="col-md-2">{{items.rate}}</div>
+            <div class="col-md-1">{{items.quantity}}</div>
+            <div class="col-md-2">{{items.amount}}</div>
+            <div class="col-md-2">{{items.profit}}</div>
+        </div>
+        {% endfor %}
+        <button type="submit">Delete</button>
+    </form>
+    {% else %}
+    {% for items in mylist_items %}
+    <div class="row mx-5 pl-5 border border-dark ">
+        <div class="col-md-2">{{items.id}}</div>
+        <div class="col-md-3">{{items.name}}</div>
+        <div class="col-md-2">{{items.rate}}</div>
+        <div class="col-md-1">{{items.quantity}}</div>
+        <div class="col-md-2">{{items.amount}}</div>
+        <div class="col-md-2">{{items.profit}}</div>
+    </div>
+    {% endfor %}
+    {% endif%}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

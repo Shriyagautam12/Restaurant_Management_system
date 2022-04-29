@@ -1,0 +1,108 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        .container {
+            height: 100%
+        }
+        .top {
+            width: 400px;
+            margin: auto;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            height: 90px;
+            background-color: rgb(93, 94, 93);
+        }
+        body {
+            background-color: rgb(198, 245, 198);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top text-center">
+        <h5 class="pt-3">RESTAURANT STAFF MANAGEMENT OPERATIONS</h5>
+    </div>
+
+    <div class="container ">
+        <div class="column mb-3">
+            <div class="row col-md-12 border border-danger text-center">
+                <div class="col-sm-8">
+                    <h5>Restaurant management Sysytem</h5>
+                </div>
+                <div class="col-sm-1 border border-dark"><a href="{% url 'login_handle:additem' %}">Add</a></div>
+                <div class="col-lg-1 border border-dark"><a href="{% url 'login_handle:deleteitems' %}">Delete</a></div>
+                <div class="col-lg-1 border border-dark"><a href="{% url 'login_handle:updateitems' %}">Update</a></div>
+                <div class="col-lg-1 border border-dark"><a href="{% url 'goback' %}">Go Back</a></div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row bg bg-primary mb-1">
+                <div class="col-sm-2">
+                    <h4>Id</h4>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Name</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4>Price</h4>
+                </div>
+            </div>
+            {% if flag is 1 %}
+            <form action="{% url 'login_handle:deleteitems' %}" method="POST">
+                {% csrf_token %}
+                {% for item in items_list %}
+                <div class="row mb-1">
+                    <div class="col-sm-1">
+                        <input type="radio" name="todelete" id="{{item.name}}" value="{{item.name}}">
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>{{item.id}}</h5>
+                    </div>
+                    <div class="col-sm-5">
+                        <h5>{{item.name}}</h5>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5>{{item.price}}</h5>
+                    </div>
+                </div>
+                {% endfor %}
+                <button type="sunmit"> Delete</button>
+            </form>
+            {% else %}
+            {% for item in items_list %}
+            <div class="row mb-1">
+                <div class="col-sm-2">
+                    <h5>{{item.id}}</h5>
+                </div>
+                <div class="col-sm-6">
+                    <h5>{{item.name}}</h5>
+                </div>
+                <div class="col-sm-4">
+                    <h5>{{item.price}}</h5>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

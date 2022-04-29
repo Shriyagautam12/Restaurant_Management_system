@@ -1,0 +1,110 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Main menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .card-img-top {
+            height: 10rem;
+            object-fit: cover;
+        }
+        body{
+            background-color: rgb(128, 240, 156);
+        }
+        .topnav {
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" >
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4">
+                <h1><a href="#" class="logo">      </a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="#"><span class="fa fa-home mr-3"></span>Restaurant management System</a>
+                    </li>
+                </ul>
+
+                <div class="mb-5">
+                    <h3 class="h6 mb-3">Welcome to our Restaurant Management System.</h3> 
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="ml-4 p-4 p-md-5 pt-2">
+            <div class="topnav">
+                <a class="active" href="#home"><h3 class="text-center">RESTAURANT MANAGEMENT SYSTEM</h3></a>
+            </div>
+            <div class="conatiner text-center">
+                <div class="row align-items-center">
+                    <div class="card col-md-3 mr-3 mb-3" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static 'images/menuactions.png' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="{% url 'login_handle:menuactions' %}" class="btn btn-primary">Menu-actions</a>
+                        </div>
+                    </div>
+                    <div class="card col-md-3 mr-3 mb-3" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static 'images/servicecustomer.png' %}." alt="Card image cap">
+                        <div class="card-body">
+                            <a href="{% url 'login_handle:servicecustomer' %}" class="btn btn-primary">service-customer</a>
+                        </div>
+                    </div>
+                    <div class="card col-md-3 mr-3 mb-3" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static 'images/analysis.png' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="{% url 'login_handle:restaurantanalysis' %}" class="btn btn-primary">restaurant analysis</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="card col-md-3 mr-3 mb-3" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static 'images/profit.png' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="{% url 'login_handle:profitanalysis' %}" class="btn btn-primary">profit analysis</a>
+                        </div>
+                    </div>
+                    <div class="card col-md-3 mr-3 mb-3" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static 'images/staff.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="{% url 'staff:staffpage' %}" class="btn btn-primary">staff management</a>
+                        </div>
+                    </div>
+                    <div class="card col-md-3 mr-3 mb-3" style="width: 18rem;">
+                        <img class="card-img-top" src="{% static 'images/signout.png' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="{% url 'signout' %}" class="btn btn-primary">Signout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
